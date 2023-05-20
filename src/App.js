@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import LIST from './orgList'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1 className='page-heading'>Salesforce Demo Orgs List</h1>
+      <p className="page-subheading mb-50">Find the org you need to start building</p>
+      <div className='card-wrapper'>
+      {LIST.map(item=>(<a className="card" href={item.link} key={item.name} target="_blank" rel="noreferrer">
+        <div className='img-wrapper width20'>
+          <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt={`${item.name} cloud`}/>
+        </div>
+        <div className='width80'>
+          <h2>{item.name}</h2>
+          <p className='subtext'>{item.subtext}</p>
+        </div>
+       
+      </a>))}
+      </div>
+      <footer>
+      Made with ❤️ by <a href="https://www.linkedin.com/in/nikhilkarkra">Nikhil Karkra</a>
+      </footer>
+    </main>
   );
 }
 
